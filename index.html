@@ -38,7 +38,6 @@
     margin: 0 auto;
   }
 
-  /* ── Header ── */
   .header {
     display: flex;
     justify-content: space-between;
@@ -54,15 +53,11 @@
     letter-spacing: -0.3px;
     line-height: 1.1;
   }
-  .header h1 em {
-    font-style: italic;
-    color: var(--blue);
-  }
+  .header h1 em { font-style: italic; color: var(--blue); }
   .header-right { text-align: right; }
   .header-date { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 4px; }
   .header-greeting { font-size: 13px; color: var(--navy); font-weight: 500; margin-top: 2px; }
 
-  /* ── Stats ── */
   .stats {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -93,7 +88,6 @@
     font-weight: 600;
   }
 
-  /* ── Progress ── */
   .progress-wrap {
     background: var(--card);
     border-radius: 14px;
@@ -112,11 +106,7 @@
     letter-spacing: 0.7px;
     margin-bottom: 10px;
   }
-  .progress-bar {
-    background: var(--bg);
-    border-radius: 100px;
-    height: 5px;
-  }
+  .progress-bar { background: var(--bg); border-radius: 100px; height: 5px; }
   .progress-fill {
     background: linear-gradient(90deg, var(--blue), var(--navy2));
     height: 100%;
@@ -124,7 +114,6 @@
     transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
   }
 
-  /* ── Section label ── */
   .section-label {
     font-size: 11px;
     color: var(--muted);
@@ -135,9 +124,7 @@
     padding-left: 2px;
   }
 
-  /* ── Tasks ── */
   .task-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
-
   .task {
     background: var(--card);
     border-radius: 16px;
@@ -149,112 +136,56 @@
     border: 1px solid var(--border);
     transition: opacity 0.3s, border-color 0.3s;
   }
-  .task.done {
-    opacity: 0.5;
-    border-color: var(--green);
-    background: var(--green-bg);
-  }
-
+  .task.done { opacity: 0.5; border-color: var(--green); background: var(--green-bg); }
   .task-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 44px; height: 44px; border-radius: 12px;
     background: var(--blue-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
   }
-
   .task-body { flex: 1; min-width: 0; }
   .task-name { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
   .task-detail { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
   .task-btns { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; }
 
   .btn-go {
-    background: var(--navy);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 7px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.1px;
+    background: var(--navy); color: #fff; border: none; border-radius: 8px;
+    padding: 7px 12px; font-size: 12px; font-weight: 600;
+    font-family: 'Inter', sans-serif; cursor: pointer;
+    text-decoration: none; display: inline-block; letter-spacing: 0.1px;
   }
   .btn-go:hover { background: var(--navy2); }
-
   .btn-check {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    letter-spacing: 0.1px;
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 6px 12px; font-size: 11px; font-weight: 600;
+    font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.1px;
   }
-  .task.done .btn-check {
-    background: var(--green-bg);
-    color: var(--green);
-    border-color: var(--green);
-  }
+  .task.done .btn-check { background: var(--green-bg); color: var(--green); border-color: var(--green); }
 
-  /* ── Vocab ── */
-  .vocab-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 32px; }
   .vocab-card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 12px 13px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
+    background: var(--card); border-radius: 12px; padding: 12px 13px;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
   }
   .vocab-card.panama {
     grid-column: 1 / -1;
-    border-color: #c8a96e;
-    background: #fffdf7;
+    border-color: #b8860b;
+    background: #fffdf5;
   }
   .vocab-es {
     font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--blue);
-    font-style: italic;
+    font-size: 15px; font-weight: 700; color: var(--blue); font-style: italic;
   }
   .vocab-en { font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 500; }
   .vocab-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    color: #8b6914;
-    background: #fdf3d8;
-    border-radius: 4px;
-    padding: 2px 6px;
-    margin-bottom: 5px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    display: inline-block; font-size: 10px; font-weight: 600;
+    color: #7a5c00; background: #fef3c0; border-radius: 4px;
+    padding: 2px 6px; margin-bottom: 5px;
+    letter-spacing: 0.5px; text-transform: uppercase;
   }
 
-  /* ── Footer ── */
-  .footer {
-    text-align: center;
-    font-size: 11px;
-    color: var(--muted);
-    padding-bottom: 8px;
-    font-style: italic;
-  }
+  .footer { text-align: center; font-size: 11px; color: var(--muted); padding-bottom: 8px; font-style: italic; }
 </style>
 </head>
 <body>
@@ -293,10 +224,9 @@ const START = new Date('2026-06-23T00:00:00');
 const END   = new Date('2026-09-23T00:00:00');
 const TOTAL = Math.round((END - START) / 864e5);
 
-// vocab entries: [spanish, english, optional_tag]
-// tag 'panama' renders as a full-width highlighted card
+// Third element: 'panama' = full-width highlighted card with source note
 const VOCAB = {
-  1:  [
+  1: [
     ['llamarse','to be called'],
     ['ser','to be (perm.)'],
     ['estar','to be (temp.)'],
@@ -307,19 +237,87 @@ const VOCAB = {
     ['querer','to want'],
     ['poder','can'],
     ['ir','to go'],
-    ['¿Qué es la que hay?',"What's up? (Mily's way 🇵🇦)", 'panama'],
+    // ¿Qué xopá? = vesre (syllable-flip) of ¿Qué pasó? — THE classic Panamanian greeting
+    ['¿Qué xopá?', "What's up? — Mily's everyday greeting (flip of ¿qué pasó?)", 'panama'],
   ],
-  2:  [['madre','mother'],['padre','father'],['hermano','brother'],['hermana','sister'],['esposo','husband'],['esposa','wife'],['hijo','son'],['hija','daughter'],['mayor','older'],['menor','younger'],['chuleta','wow / oh man! (Panamanian 🇵🇦)','panama']],
-  3:  [['despertarse','to wake up'],['levantarse','to get up'],['ducharse','to shower'],['desayunar','to breakfast'],['almorzar','to lunch'],['cenar','to have dinner'],['siempre','always'],['nunca','never'],['a veces','sometimes'],['normalmente','usually'],['buena nota','cool / great (Panamanian 🇵🇦)','panama']],
-  4:  [['comer','to eat'],['beber','to drink'],['pedir','to order'],['gustar','to like'],['encantar','to love'],['probar','to try'],['cocinar','to cook'],['comida','food'],['restaurante','restaurant'],['cuenta','the bill'],['¡Provecho!','Enjoy your meal! (🇵🇦 must-know)','panama']],
-  5:  [['ir','to go'],['venir','to come'],['llegar','to arrive'],['salir','to leave'],['doblar','to turn'],['seguir','to continue'],['calle','street'],['esquina','corner'],['metro','subway'],['parada','stop'],['la ruta','the bus (Panama City 🇵🇦)','panama']],
-  6:  [['ayer','yesterday'],['anoche','last night'],['la semana pasada','last week'],['fui','I went'],['vine','I came'],['hice','I did'],['dije','I said'],['tuve','I had'],['estuve','I was'],['vi','I saw'],['fui al rancho','I went to the countryside (🇵🇦)','panama']],
-  7:  [['cuando era niño','when I was a child'],['antes','before'],['era','I was'],['tenía','I had'],['vivía','I lived'],['iba','I used to go'],['quería','I wanted'],['podía','I could'],['hacía','I used to do'],['veía','I used to see'],['en Panamá','in Panama (practice it! 🇵🇦)','panama']],
-  8:  [['futuro','future'],['meta','goal'],['esperar','to hope'],['pensar','to plan'],['voy a',"I'm going to"],['próximo','next'],['pronto','soon'],['algún día','someday'],['tener ganas de','to feel like'],['soñar con','to dream of'],['visitar Panamá','to visit Panama 🇵🇦','panama']],
-  9:  [['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],['opinión','opinion'],['quizás','maybe'],['depende','it depends'],['estoy de acuerdo','I agree'],['no creo que',"I don't think"],['me parece que','it seems to me'],['¿Cómo está la vaina?','How\'s it going? (Panamanian 🇵🇦)','panama']],
-  10: [['trabajo','work'],['reunión','meeting'],['jefe','boss'],['proyecto','project'],['plazo','deadline'],['porque','because'],['aunque','although'],['sin embargo','however'],['por eso','therefore'],['además','also'],['salao / salada','unlucky / joking insult (🇵🇦 slang)','panama']],
-  11: [['sentir','to feel'],['alegrarse','to be happy'],['preocuparse','to worry'],['enojarse','to get angry'],['amor','love'],['amistad','friendship'],['confianza','trust'],['dijo que','he/she said that'],['me pidió que','he/she asked me to'],['perdón','forgiveness'],['te quiero mucho','I love you a lot (say it to Mily 🇵🇦)','panama']],
-  12: [['¿Qué es la que hay?',"What's up?"],['chuleta','wow!'],['buena nota','cool / great'],['¡Provecho!','enjoy your meal'],['la vaina','the thing / situation'],['salao','unlucky'],['la ruta','the bus'],['con mucho gusto','with pleasure'],['mi amor','my love'],['¡Dale!','Let\'s go! / OK!'],['Ya soy bilingüe','I\'m bilingual now 🎉','panama']],
+  2: [
+    ['madre','mother'],['padre','father'],['hermano','brother'],['hermana','sister'],
+    ['esposo','husband'],['esposa','wife'],['hijo','son'],['hija','daughter'],
+    ['mayor','older'],['menor','younger'],
+    // fren = "friend" borrowed from English — ubiquitous in Panama due to US influence
+    ['fren', 'friend — borrowed from English, used just like amigo', 'panama'],
+  ],
+  3: [
+    ['despertarse','to wake up'],['levantarse','to get up'],['ducharse','to shower'],
+    ['desayunar','to have breakfast'],['almorzar','to have lunch'],['cenar','to have dinner'],
+    ['siempre','always'],['nunca','never'],['a veces','sometimes'],['normalmente','usually'],
+    // offi = "está bien" — all-purpose OK/sure/sounds good, used constantly
+    ['offi', 'OK / sure / all good — the most-used word in Panama', 'panama'],
+  ],
+  4: [
+    ['comer','to eat'],['beber','to drink'],['pedir','to order'],['gustar','to like'],
+    ['encantar','to love'],['probar','to try'],['cocinar','to cook'],
+    ['comida','food'],['restaurante','restaurant'],['cuenta','the bill'],
+    // dale pues = "go for it / OK" — encouragement or agreement, very everyday
+    ['dale pues', 'go ahead / sounds good — everyday agreement or encouragement', 'panama'],
+  ],
+  5: [
+    ['ir','to go'],['venir','to come'],['llegar','to arrive'],['salir','to leave'],
+    ['doblar','to turn'],['seguir','to continue'],['calle','street'],
+    ['esquina','corner'],['metro','subway'],['parada','stop'],
+    // la trambilla = the brightly-painted "chicken bus" — backbone of Panama transport
+    ['la trambilla', 'the painted chicken bus — how most Panamanians get around', 'panama'],
+  ],
+  6: [
+    ['ayer','yesterday'],['anoche','last night'],['la semana pasada','last week'],
+    ['fui','I went'],['vine','I came'],['hice','I did'],
+    ['dije','I said'],['tuve','I had'],['estuve','I was'],['vi','I saw'],
+    // chupata = a loud party with lots of alcohol — "¿Fuiste a la chupata?"
+    ['chupata', 'a loud party with lots of drinks — "Did you go to the party?"', 'panama'],
+  ],
+  7: [
+    ['cuando era niño','when I was a child'],['antes','before'],['era','I was'],
+    ['tenía','I had'],['vivía','I lived'],['iba','I used to go'],
+    ['quería','I wanted'],['podía','I could'],['hacía','I used to do'],['veía','I used to see'],
+    // tener goma = to have a hangover (literally "to have glue") — after too much chupata
+    ['tener goma', 'to have a hangover — lit. "to have glue" (after the chupata)', 'panama'],
+  ],
+  8: [
+    ['futuro','future'],['meta','goal'],['esperar','to hope'],['pensar','to plan'],
+    ['voy a',"I'm going to"],['próximo','next'],['pronto','soon'],
+    ['algún día','someday'],['tener ganas de','to feel like'],['soñar con','to dream of'],
+    // vaina = "thing/stuff/situation" — used when you can't think of the right word
+    ['vaina', 'thing / situation / stuff — Panamanian catch-all noun', 'panama'],
+  ],
+  9: [
+    ['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],
+    ['opinión','opinion'],['quizás','maybe'],['depende','it depends'],
+    ['estoy de acuerdo','I agree'],['no creo que',"I don't think that"],['me parece que','it seems to me'],
+    // arroz con mango = a big mess / serious problem (lit. "rice with mango" — makes no sense = chaos)
+    ['arroz con mango', 'a big mess / serious problem — lit. "rice with mango"', 'panama'],
+  ],
+  10: [
+    ['trabajo','work'],['reunión','meeting'],['jefe','boss'],['proyecto','project'],
+    ['plazo','deadline'],['porque','because'],['aunque','although'],
+    ['sin embargo','however'],['por eso','therefore'],['además','also'],
+    // ¡Chuleta! = exclamation of surprise or frustration — "Damn!" or "Wow!" — kids use it too
+    ['¡Chuleta!', '"Damn!" or "Wow!" — Panamanian exclamation, even kids say it', 'panama'],
+  ],
+  11: [
+    ['sentir','to feel'],['alegrarse','to be happy'],['preocuparse','to worry'],
+    ['enojarse','to get angry'],['amor','love'],['amistad','friendship'],['confianza','trust'],
+    ['dijo que','he/she said that'],['me pidió que','he/she asked me to'],['perdón','forgiveness'],
+    // inchi pinchi = best friends, inseparable — "los inchi pinchi" for a close pair
+    ['inchi pinchi', 'best friends / inseparable — what you and Mily are', 'panama'],
+  ],
+  12: [
+    ['¿Qué xopá?',"What's up?"],['fren','friend'],['offi','OK / all good'],
+    ['dale pues','go ahead / sounds good'],['la trambilla','the chicken bus'],
+    ['chupata','loud party'],['tener goma','to have a hangover'],
+    ['vaina','thing / situation'],['arroz con mango','a big mess'],
+    ['¡Chuleta!','Damn! / Wow!'],
+    ['inchi pinchi', 'best friends forever — you earned it', 'panama'],
+  ],
 };
 
 const SCHED = {
