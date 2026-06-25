@@ -168,11 +168,7 @@
     background: var(--card); border-radius: 12px; padding: 12px 13px;
     box-shadow: var(--shadow); border: 1px solid var(--border);
   }
-  .vocab-card.panama {
-    grid-column: 1 / -1;
-    border-color: #b8860b;
-    background: #fffdf5;
-  }
+  .vocab-card.panama { grid-column: 1 / -1; border-color: #b8860b; background: #fffdf5; }
   .vocab-es {
     font-family: 'Playfair Display', serif;
     font-size: 15px; font-weight: 700; color: var(--blue); font-style: italic;
@@ -184,6 +180,16 @@
     padding: 2px 6px; margin-bottom: 5px;
     letter-spacing: 0.5px; text-transform: uppercase;
   }
+
+  .sync-dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--muted);
+    margin-left: 6px; vertical-align: middle;
+    transition: background 0.4s;
+  }
+  .sync-dot.syncing { background: #f59e0b; }
+  .sync-dot.synced  { background: var(--green); }
+  .sync-dot.error   { background: #dc2626; }
 
   .footer { text-align: center; font-size: 11px; color: var(--muted); padding-bottom: 8px; font-style: italic; }
 </style>
@@ -197,6 +203,7 @@
   </div>
   <div class="header-right">
     <div class="header-date" id="dateDisplay"></div>
+    <div style="font-size:10px;color:var(--muted);margin-top:4px" id="syncStatus"></div>
   </div>
 </div>
 
@@ -313,6 +320,37 @@ function weekNum() { const days = Math.floor((new Date() - START) / 864e5); retu
 function daysLeft() { return Math.max(0, Math.ceil((END - new Date()) / 864e5)); }
 function progressPct() { return Math.min(100, Math.round((Math.round((new Date() - START) / 864e5) / TOTAL) * 100)); }
 
+function setSyncStatus(state) {
+  const el = document.getElementById('syncStatus');
+  if (!el) return;
+  if (state === 'syncing') el.textContent = '⏺ saving...';
+  else if (state === 'synced') el.textContent = '✓ logged';
+  else if (state === 'error')  el.textContent = '⚠ log failed';
+  else el.textContent = '';
+}
+
+async function logToGitHub(state) {
+  const key = todayKey();
+  const completed = (state.done && state.done[key]) || [];
+  setSyncStatus('syncing');
+  try {
+    const res = await fetch('/api/log', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        date: key,
+        completed,
+        episodes: { lt: state.ltEp || 1, ext: state.extEp || 1 },
+      }),
+    });
+    setSyncStatus(res.ok ? 'synced' : 'error');
+    setTimeout(() => setSyncStatus(''), 3000);
+  } catch {
+    setSyncStatus('error');
+    setTimeout(() => setSyncStatus(''), 3000);
+  }
+}
+
 function tasksForToday(dow, state) {
   const ep  = state.ltEp  || 1;
   const ext = state.extEp || 1;
@@ -340,7 +378,9 @@ window.markDone = function(id) {
     const yk = `${yest.getFullYear()}-${String(yest.getMonth()+1).padStart(2,'0')}-${String(yest.getDate()).padStart(2,'0')}`;
     state.streak = ((state.done[yk] && state.done[yk].length > 0) ? (state.streak || 0) : 0) + 1;
   }
-  saveState(state); render();
+  saveState(state);
+  render();
+  logToGitHub(state);
 };
 
 function render() {
