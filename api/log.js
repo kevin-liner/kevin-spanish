@@ -1,6 +1,6 @@
 // Vercel serverless function — writes daily completion log to GitHub
 // Called by the Mi Plan app whenever Kevin taps "Mark Done"
-// Requires GITHUB_TOKEN env var in Vercel (repo contents: read+write)
+// Requires spanishgit env var in Vercel (repo contents: read+write)
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -9,8 +9,8 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN not configured' });
+  const token = process.env.spanishgit || process.env.GITHUB_TOKEN;
+  if (!token) return res.status(500).json({ error: 'GitHub token not configured' });
 
   const { date, completed, episodes } = req.body;
   if (!date || !completed) return res.status(400).json({ error: 'Missing date or completed' });
