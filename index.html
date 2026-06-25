@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Mi Plan">
-<title>Mi Plan 🇪🇸</title>
+<title>Mi Plan 🇵🇦</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -221,6 +221,11 @@
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
   }
+  .vocab-card.panama {
+    grid-column: 1 / -1;
+    border-color: #c8a96e;
+    background: #fffdf7;
+  }
   .vocab-es {
     font-family: 'Playfair Display', serif;
     font-size: 15px;
@@ -229,6 +234,18 @@
     font-style: italic;
   }
   .vocab-en { font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 500; }
+  .vocab-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #8b6914;
+    background: #fdf3d8;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
 
   /* ── Footer ── */
   .footer {
@@ -244,7 +261,7 @@
 
 <div class="header">
   <div>
-    <h1>Mi Plan <em>🇪🇸</em></h1>
+    <h1>Mi Plan <em>🇵🇦</em></h1>
     <div class="header-greeting" id="greeting">Hola, Kevin</div>
   </div>
   <div class="header-right">
@@ -276,19 +293,33 @@ const START = new Date('2026-06-23T00:00:00');
 const END   = new Date('2026-09-23T00:00:00');
 const TOTAL = Math.round((END - START) / 864e5);
 
+// vocab entries: [spanish, english, optional_tag]
+// tag 'panama' renders as a full-width highlighted card
 const VOCAB = {
-  1:  [['llamarse','to be called'],['ser','to be (perm.)'],['estar','to be (temp.)'],['tener','to have'],['vivir','to live'],['trabajar','to work'],['hablar','to speak'],['querer','to want'],['poder','can'],['ir','to go']],
-  2:  [['madre','mother'],['padre','father'],['hermano','brother'],['hermana','sister'],['esposo','husband'],['esposa','wife'],['hijo','son'],['hija','daughter'],['mayor','older'],['menor','younger']],
-  3:  [['despertarse','to wake up'],['levantarse','to get up'],['ducharse','to shower'],['desayunar','to breakfast'],['almorzar','to lunch'],['cenar','to have dinner'],['siempre','always'],['nunca','never'],['a veces','sometimes'],['normalmente','usually']],
-  4:  [['comer','to eat'],['beber','to drink'],['pedir','to order'],['gustar','to like'],['encantar','to love'],['probar','to try'],['cocinar','to cook'],['comida','food'],['restaurante','restaurant'],['cuenta','the bill']],
-  5:  [['ir','to go'],['venir','to come'],['llegar','to arrive'],['salir','to leave'],['doblar','to turn'],['seguir','to continue'],['calle','street'],['esquina','corner'],['metro','subway'],['parada','stop']],
-  6:  [['ayer','yesterday'],['anoche','last night'],['la semana pasada','last week'],['fui','I went'],['vine','I came'],['hice','I did'],['dije','I said'],['tuve','I had'],['estuve','I was'],['vi','I saw']],
-  7:  [['cuando era niño','when I was a child'],['antes','before'],['era','I was'],['tenía','I had'],['vivía','I lived'],['iba','I used to go'],['quería','I wanted'],['podía','I could'],['hacía','I used to do'],['veía','I used to see']],
-  8:  [['futuro','future'],['meta','goal'],['esperar','to hope'],['pensar','to plan'],['voy a',"I'm going to"],['próximo','next'],['pronto','soon'],['algún día','someday'],['tener ganas de','to feel like'],['soñar con','to dream of']],
-  9:  [['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],['opinión','opinion'],['quizás','maybe'],['depende','it depends'],['estoy de acuerdo','I agree'],['no creo que',"I don't think"],['me parece que','it seems to me']],
-  10: [['trabajo','work'],['reunión','meeting'],['jefe','boss'],['proyecto','project'],['plazo','deadline'],['porque','because'],['aunque','although'],['sin embargo','however'],['por eso','therefore'],['además','also']],
-  11: [['sentir','to feel'],['alegrarse','to be happy'],['preocuparse','to worry'],['enojarse','to get angry'],['amor','love'],['amistad','friendship'],['confianza','trust'],['dijo que','he/she said that'],['me pidió que','he/she asked me to'],['perdón','forgiveness']],
-  12: [],
+  1:  [
+    ['llamarse','to be called'],
+    ['ser','to be (perm.)'],
+    ['estar','to be (temp.)'],
+    ['tener','to have'],
+    ['vivir','to live'],
+    ['trabajar','to work'],
+    ['hablar','to speak'],
+    ['querer','to want'],
+    ['poder','can'],
+    ['ir','to go'],
+    ['¿Qué es la que hay?',"What's up? (Mily's way 🇵🇦)", 'panama'],
+  ],
+  2:  [['madre','mother'],['padre','father'],['hermano','brother'],['hermana','sister'],['esposo','husband'],['esposa','wife'],['hijo','son'],['hija','daughter'],['mayor','older'],['menor','younger'],['chuleta','wow / oh man! (Panamanian 🇵🇦)','panama']],
+  3:  [['despertarse','to wake up'],['levantarse','to get up'],['ducharse','to shower'],['desayunar','to breakfast'],['almorzar','to lunch'],['cenar','to have dinner'],['siempre','always'],['nunca','never'],['a veces','sometimes'],['normalmente','usually'],['buena nota','cool / great (Panamanian 🇵🇦)','panama']],
+  4:  [['comer','to eat'],['beber','to drink'],['pedir','to order'],['gustar','to like'],['encantar','to love'],['probar','to try'],['cocinar','to cook'],['comida','food'],['restaurante','restaurant'],['cuenta','the bill'],['¡Provecho!','Enjoy your meal! (🇵🇦 must-know)','panama']],
+  5:  [['ir','to go'],['venir','to come'],['llegar','to arrive'],['salir','to leave'],['doblar','to turn'],['seguir','to continue'],['calle','street'],['esquina','corner'],['metro','subway'],['parada','stop'],['la ruta','the bus (Panama City 🇵🇦)','panama']],
+  6:  [['ayer','yesterday'],['anoche','last night'],['la semana pasada','last week'],['fui','I went'],['vine','I came'],['hice','I did'],['dije','I said'],['tuve','I had'],['estuve','I was'],['vi','I saw'],['fui al rancho','I went to the countryside (🇵🇦)','panama']],
+  7:  [['cuando era niño','when I was a child'],['antes','before'],['era','I was'],['tenía','I had'],['vivía','I lived'],['iba','I used to go'],['quería','I wanted'],['podía','I could'],['hacía','I used to do'],['veía','I used to see'],['en Panamá','in Panama (practice it! 🇵🇦)','panama']],
+  8:  [['futuro','future'],['meta','goal'],['esperar','to hope'],['pensar','to plan'],['voy a',"I'm going to"],['próximo','next'],['pronto','soon'],['algún día','someday'],['tener ganas de','to feel like'],['soñar con','to dream of'],['visitar Panamá','to visit Panama 🇵🇦','panama']],
+  9:  [['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],['opinión','opinion'],['quizás','maybe'],['depende','it depends'],['estoy de acuerdo','I agree'],['no creo que',"I don't think"],['me parece que','it seems to me'],['¿Cómo está la vaina?','How\'s it going? (Panamanian 🇵🇦)','panama']],
+  10: [['trabajo','work'],['reunión','meeting'],['jefe','boss'],['proyecto','project'],['plazo','deadline'],['porque','because'],['aunque','although'],['sin embargo','however'],['por eso','therefore'],['además','also'],['salao / salada','unlucky / joking insult (🇵🇦 slang)','panama']],
+  11: [['sentir','to feel'],['alegrarse','to be happy'],['preocuparse','to worry'],['enojarse','to get angry'],['amor','love'],['amistad','friendship'],['confianza','trust'],['dijo que','he/she said that'],['me pidió que','he/she asked me to'],['perdón','forgiveness'],['te quiero mucho','I love you a lot (say it to Mily 🇵🇦)','panama']],
+  12: [['¿Qué es la que hay?',"What's up?"],['chuleta','wow!'],['buena nota','cool / great'],['¡Provecho!','enjoy your meal'],['la vaina','the thing / situation'],['salao','unlucky'],['la ruta','the bus'],['con mucho gusto','with pleasure'],['mi amor','my love'],['¡Dale!','Let\'s go! / OK!'],['Ya soy bilingüe','I\'m bilingual now 🎉','panama']],
 };
 
 const SCHED = {
@@ -365,9 +396,14 @@ function render() {
     </div>`;
   }).join('');
   const vocab = VOCAB[wk] || VOCAB[1];
-  document.getElementById('vocabGrid').innerHTML = vocab.map(([es,en]) =>
-    `<div class="vocab-card"><div class="vocab-es">${es}</div><div class="vocab-en">${en}</div></div>`
-  ).join('');
+  document.getElementById('vocabGrid').innerHTML = vocab.map(([es, en, tag]) => {
+    const isPanama = tag === 'panama';
+    return `<div class="vocab-card${isPanama ? ' panama' : ''}">
+      ${isPanama ? '<div class="vocab-tag">🇵🇦 Mily\'s Panama</div>' : ''}
+      <div class="vocab-es">${es}</div>
+      <div class="vocab-en">${en}</div>
+    </div>`;
+  }).join('');
 }
 
 render();
