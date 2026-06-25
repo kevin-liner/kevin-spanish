@@ -110,7 +110,7 @@ const VOCAB = {
   6:  [['ayer','yesterday'],['anoche','last night'],['la semana pasada','last week'],['fui','I went'],['vine','I came'],['hice','I did'],['dije','I said'],['tuve','I had'],['estuve','I was'],['vi','I saw']],
   7:  [['cuando era niño','when I was a child'],['antes','before'],['era','I was'],['tenía','I had'],['vivía','I lived'],['iba','I used to go'],['quería','I wanted'],['podía','I could'],['hacía','I used to do'],['veía','I used to see']],
   8:  [['futuro','future'],['meta','goal'],['esperar','to hope'],['pensar','to plan'],['voy a',"I'm going to"],['próximo','next'],['pronto','soon'],['algún día','someday'],['tener ganas de','to feel like'],['soñar con','to dream of']],
-  9:  [['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],['opinión','opinion'],['quizás','maybe'],['depende','it depends'],['estoy de acuerdo','I agree'],['no creo que','I don\'t think'],['me parece que','it seems to me']],
+  9:  [['creer','to believe'],['pensar','to think'],['parecer','to seem'],['dudar','to doubt'],['opinión','opinion'],['quizás','maybe'],['depende','it depends'],['estoy de acuerdo','I agree'],['no creo que',"I don't think"],['me parece que','it seems to me']],
   10: [['trabajo','work'],['reunión','meeting'],['jefe','boss'],['proyecto','project'],['plazo','deadline'],['porque','because'],['aunque','although'],['sin embargo','however'],['por eso','therefore'],['además','also']],
   11: [['sentir','to feel'],['alegrarse','to be happy'],['preocuparse','to worry'],['enojarse','to get angry'],['amor','love'],['amistad','friendship'],['confianza','trust'],['dijo que','he/she said that'],['me pidió que','he/she asked me to'],['perdón','forgiveness']],
   12: [],
@@ -133,9 +133,9 @@ function tasksForToday(dow, state) {
   const ep  = state.ltEp  || 1;
   const ext = state.extEp || 1;
   const tasks = [];
-  if (SCHED.audio.has(dow))   tasks.push({ id:'audio',   icon:'🎧', name:'Language Transfer',    detail:`Episode ${ep} of 40 — ~15 min`,     url:'https://www.languagetransfer.org/free-courses-1#complete-spanish', btn:'Listen' });
-  if (SCHED.content.has(dow)) tasks.push({ id:'content', icon:'📺', name:'Extra en Español',      detail:`Episode ${ext} — ~25 min`,           url:`https://www.youtube.com/results?search_query=extra+en+espa%C3%B1ol+episode+${ext}`, btn:'Watch' });
-  if (SCHED.reading.has(dow)) tasks.push({ id:'reading', icon:'📰', name:'News in Slow Spanish',  detail:'Beginner level — ~10 min',           url:'https://www.newsinslow.com/spanish-podcast/', btn:'Read' });
+  if (SCHED.audio.has(dow))   tasks.push({ id:'audio',   icon:'🎧', name:'Language Transfer',    detail:`Episode ${ep} of 40 — ~15 min`,  url:'https://www.languagetransfer.org/courses#complete-spanish', btn:'Listen' });
+  if (SCHED.content.has(dow)) tasks.push({ id:'content', icon:'📺', name:'Extra en Español',      detail:`Episode ${ext} — ~25 min`,       url:'https://www.youtube.com/playlist?list=PLiSXvPiNzG5Ip24ZY75Zy23HAoMIokOfy', btn:'Watch' });
+  if (SCHED.reading.has(dow)) tasks.push({ id:'reading', icon:'📰', name:'News in Slow Spanish',  detail:'Beginner level — ~10 min',       url:'https://www.newsinslow.com/learn-spanish/', btn:'Read' });
   tasks.push({ id:'mily', icon:'💬', name:'Spanish with Mily', detail:'Answer her question of the day', url:null, btn:null });
   return tasks;
 }
